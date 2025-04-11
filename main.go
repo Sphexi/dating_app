@@ -20,17 +20,18 @@ import (
 // @host localhost:8080
 // @BasePath /
 
-// Get the db environment variables
-dbHost := os.Getenv("DB_HOST")
-dbPort := os.Getenv("DB_PORT")
-dbUser := os.Getenv("DB_USER")
-dbPassword := os.Getenv("DB_PASSWORD")
-dbName := os.Getenv("DB_NAME")
 
 func main() {
 	var err error
 	var db  *sql.DB
 
+	// Get the db environment variables
+	dbHost := os.Getenv("DB_HOST")
+	dbPort := os.Getenv("DB_PORT")
+	dbUser := os.Getenv("DB_USER")
+	dbPassword := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
+	
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
     dbHost, dbPort, dbUser, dbPassword, dbName)
