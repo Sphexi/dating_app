@@ -63,9 +63,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/386
+          platforms: linux/amd64,linux/arm64
           labels: ${{ steps.meta.outputs.labels }}
-          tags: sphexi/dating-app      
+          tags: ${{ steps.meta.outputs.tags }}      
           cache-from: type=registry,ref=sphexi/dating-app:cache
           cache-to: type=registry,ref=sphexi/dating-app:cache,mode=max
 
