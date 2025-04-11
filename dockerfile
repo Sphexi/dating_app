@@ -5,12 +5,12 @@ WORKDIR /app
 COPY . app
 
 # Pull dependencies and build
-cd app
-RUN go get -u github.com/gorilla/sessions
-RUN go get -u github.com/lib/pq
-RUN go get -u github.com/swaggo/http-swagger
-RUN go get -u golang.org/x/crypto/bcrypt
 
-swag init
-go mod tidy
-go run main.go
+RUN cd app && \
+    go get -u github.com/gorilla/sessions && \
+    go get -u github.com/lib/pq && \
+    go get -u github.com/swaggo/http-swagger && \
+    go get -u golang.org/x/crypto/bcrypt
+    swag init && \
+    go mod tidy && \
+    go run main.go
