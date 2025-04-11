@@ -16,8 +16,10 @@ COPY . ./
 #    go mod tidy && \
 #    go run main.go
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /dating-app
 
-EXPOSE 8080
+# Temp commenting out below, it isn't working rn trying something fresh and new
+#RUN CGO_ENABLED=0 GOOS=linux go build -o /dating-app
+#EXPOSE 8080
+#CMD ["/dating-app"]
 
-CMD ["/dating-app"]
+RUN go run main.go

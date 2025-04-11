@@ -3,7 +3,7 @@ version: '1'
 services:
   dating-app-v1:
     container_name: dating-app
-    image: ghcr.io/sphexi/dating-app:main
+    image: ghcr.io/sphexi/dating_app:main
     restart: unless-stopped
     environment:
       - DB_USER=
