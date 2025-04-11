@@ -54,10 +54,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Read Docker Image Identifiers
-        run: echo ::set-env name=IMAGE_REPOSITORY::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }
 
       - name: Build and push Docker image
         id: build-image
@@ -66,6 +63,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          repository: sphexi/dating-app
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/386
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}          
