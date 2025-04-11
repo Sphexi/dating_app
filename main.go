@@ -43,7 +43,7 @@ func main() {
 
 	psqlInfo = fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
-    dbHost, dbPort, dbUser, dbPassword, dbName)
+    dbHost, portInt, dbUser, dbPassword, dbName)
 
 	db, err = sql.Open("postgres", psqlInfo)
 	if err != nil {
