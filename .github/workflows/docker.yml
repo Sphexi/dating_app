@@ -66,8 +66,8 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/386
           labels: ${{ steps.meta.outputs.labels }}
           tags: sphexi/dating-app      
-          cache-from: type=registry,ref=sphexi/${{ github.repository }}:cache
-          cache-to: type=registry,ref=sphexi/${{ github.repository }}:cache,mode=max
+          cache-from: type=registry,ref=sphexi/dating-app:cache
+          cache-to: type=registry,ref=sphexi/dating-app:cache,mode=max
 
 
 
