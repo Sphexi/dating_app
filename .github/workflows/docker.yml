@@ -65,6 +65,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/386
           labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}          
           cache-from: type=registry,ref=${{ secrets.REGISTRY }}/${{ github.repository }}:cache
           cache-to: type=registry,ref=${{ secrets.REGISTRY }}/${{ github.repository }}:cache,mode=max
 
