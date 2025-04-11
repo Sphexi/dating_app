@@ -19,12 +19,33 @@ import (
 // @version 1.0
 // @host localhost:8080
 // @BasePath /
+
+// Get the db environment variables
+var dbHost = os.Getenv("DB_HOST")
+var dbPort = os.Getenv("DB_PORT")
+var dbUser = os.Getenv("DB_USER")
+var dbPassword = os.Getenv("DB_PASSWORD")
+var dbName = os.Getenv("DB_NAME")
+
+const (
+	host = dbHost
+	port = dbPort
+	user = dbUser
+	password = dbPassword
+	dbname = dbName
+)
+
 func main() {
 	var err error
 	var db  *sql.DB
-	db, err = sql.Open("postgres", "user=root password=123123123 dbname=dating_app sslmode=disable")
+
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
+    "password=%s dbname=%s sslmode=disable",
+    host, port, user, password, dbname)
+
+	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		log.Fatal(err)
+	  panic(err)
 	}
 	defer db.Close()
 
@@ -32,7 +53,7 @@ func main() {
 	api.Routes(db)
 
 	// Start the HTTP server
-	serverAddr := "localhost:8080"
+	serverAddr := "0.0.0.0:8080"
 	go func() {
 		log.Printf("Server is starting and listening on %s", serverAddr)
 		if err := http.ListenAndServe(serverAddr, nil); err != nil {
