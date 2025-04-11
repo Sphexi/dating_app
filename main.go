@@ -21,19 +21,11 @@ import (
 // @BasePath /
 
 // Get the db environment variables
-var dbHost = os.Getenv("DB_HOST")
-var dbPort = os.Getenv("DB_PORT")
-var dbUser = os.Getenv("DB_USER")
-var dbPassword = os.Getenv("DB_PASSWORD")
-var dbName = os.Getenv("DB_NAME")
-
-const (
-	host = dbHost
-	port = dbPort
-	user = dbUser
-	password = dbPassword
-	dbname = dbName
-)
+dbHost := os.Getenv("DB_HOST")
+dbPort := os.Getenv("DB_PORT")
+dbUser := os.Getenv("DB_USER")
+dbPassword := os.Getenv("DB_PASSWORD")
+dbName := os.Getenv("DB_NAME")
 
 func main() {
 	var err error
@@ -41,7 +33,7 @@ func main() {
 
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
-    host, port, user, password, dbname)
+    dbHost, dbPort, dbUser, dbPassword, dbName)
 
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
