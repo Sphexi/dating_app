@@ -3,9 +3,11 @@ package main
 import (
 	"database/sql"
 	"log"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 
 	_ "dating_app/docs"
 
@@ -31,7 +33,7 @@ func main() {
 	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWORD")
 	dbName := os.Getenv("DB_NAME")
-	
+
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
     dbHost, dbPort, dbUser, dbPassword, dbName)
