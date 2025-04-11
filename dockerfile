@@ -6,7 +6,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY * ./
+COPY . ./
 # Pull dependencies and build
 #RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-ping && \
 #    go get -u github.com/gorilla/sessions && \
